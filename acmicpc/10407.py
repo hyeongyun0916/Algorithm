@@ -1,0 +1,1 @@
+print(2 if input() is '1' else 1)
