@@ -1,57 +1,50 @@
 #include <iostream>
-#include <queue>
-#include <set>
-#include <map>
+#include <math.h>
 #include <string.h>
 
 using namespace std;
 
-// 1939, memory overflow...
-vector< vector<int> > bridge;
+// 7881
+
+/* factorial을 모두 구하는 것은 무리일 것 같음.
+규칙을 찾아보고자 함.
+n = 1 .... 일 때
+답*반복횟수
+0*1
+1*2
+2*4
+3*2
+4*2
+5*6
+6*2
+7*2
+8*2
+9*6
+10*2
+11*2
+12*6
+...
+규칙을 찾지 못함...
+*/
 
 
-int max_weight;
-int min_weight;
-int destination;
-int N;
 
-void find_max_weight(int pos, set<int> visit, int weight) {
-    visit.insert(pos);
-    if (pos == destination) {
-        max_weight = max(max_weight, weight);
-    }
-    for (int i = 1; i < N; i++) {
-        if (bridge[pos][i] && bridge[pos][i] > min_weight && visit.find(i) == visit.end()) {
-            find_max_weight(i, visit, min(weight, bridge[pos][i]));
-        }
-    }
-}
+long long *facotial;
 
 int main() {
-    cin >> N;
-    N++;
-    
-	bridge = vector< vector<int> >(N, vector<int>(N, 0));
-    max_weight = 0;
-    min_weight = __INT_MAX__;
-    
-    int M;
-    cin >> M;
-    for(int i = 0; i < M; i++)
-    {
-        int a, b, c;
-        cin >> a >> b >> c;
-        bridge[a][b] = c;
-        bridge[b][a] = c;
-        min_weight = min(min_weight, c);
+    int k = 3*pow(10, 6.0)+6;
+    facotial = new long long[k];
+    memset(facotial, 0, sizeof(facotial) * k);
+
+    facotial[0] = 1;
+    for(int i = 1; i < k; i++) {
+        facotial[i] = i * facotial[i-1];
+        cout << facotial[i] << endl;
+        if (!facotial[i]) {
+            cout << "0 " << i << endl;
+            break;
+        }
     }
-
-    int start;
-    cin >> start >> destination;
-
-    set<int> visit;
-    find_max_weight(start, visit, __INT_MAX__);
-    cout << max(max_weight, min_weight) << endl;
-
+    // cout << facotial[k-1] << endl;
     return 0;
 }
