@@ -1,50 +1,37 @@
 #include <iostream>
-#include <math.h>
-#include <string.h>
+#include <cmath>
 
 using namespace std;
 
-// 7881
+//acmicpc 2909
+//왜 틀렸는지 모르겠다
+//문제 조건이 불충분한것인가?
 
-/* factorial을 모두 구하는 것은 무리일 것 같음.
-규칙을 찾아보고자 함.
-n = 1 .... 일 때
-답*반복횟수
-0*1
-1*2
-2*4
-3*2
-4*2
-5*6
-6*2
-7*2
-8*2
-9*6
-10*2
-11*2
-12*6
-...
-규칙을 찾지 못함...
-*/
+int myAnswer(double candy, int money) {
+	if (!candy) {
+		return 0;
+	}
+	int result = round(candy / money) * money;
+	if (!result) result += money;
+	return result;
+}
 
-
-
-long long *facotial;
+int otherAnswer(double candy, int money) {
+	int result = candy / money * money;
+	if((int) candy % money >= money / 2) result += money;
+	return result;
+}
 
 int main() {
-    int k = 3*pow(10, 6.0)+6;
-    facotial = new long long[k];
-    memset(facotial, 0, sizeof(facotial) * k);
-
-    facotial[0] = 1;
-    for(int i = 1; i < k; i++) {
-        facotial[i] = i * facotial[i-1];
-        cout << facotial[i] << endl;
-        if (!facotial[i]) {
-            cout << "0 " << i << endl;
-            break;
-        }
-    }
-    // cout << facotial[k-1] << endl;
-    return 0;
+	double candy, digit;
+	cin >> candy >> digit;
+	if (!candy) {
+		cout << 0 << endl;
+		return 0;
+	}
+	int money = pow(10,digit);
+	int result = round(candy / money) * money;
+	if (!result) result += money;
+	cout << result << endl;
+	return 0;
 }
