@@ -1,3 +1,10 @@
+#pragma warning(disable:4996)
+#include <algorithm>
+#include <regex>
+#include <string>
+#include <iostream>
+
+using namespace std;
 #define optimizar_io ios_base::sync_with_stdio(0); cin.tie(0);
 #define INF 987654321
 #include <iostream>
@@ -24,7 +31,7 @@
 using namespace std;
 
 struct TreeNode {
-    string label;
+	string label;
 	TreeNode* parent;
 	vector<TreeNode*> children;
 };
@@ -63,8 +70,8 @@ vector<int> bfs(int start) {
 	vector<bool> discovered(adj.size(), false);
 	queue<int> q;
 	vector<int> order;
-	discovered[start] = true
-		q.push(start);
+	discovered[start] = true;
+	q.push(start);
 	while (!q.empty()){
 		int here = q.front();
 		q.pop();
@@ -80,7 +87,7 @@ vector<int> bfs(int start) {
 	return order;
 }
 
-const int V; //정점의갯수
+const int V = 8; //정점의갯수
 vector<pair<int, int>> adj1[V];
 vector<int> dijkstra2(int src) {
 	vector<int> dist(V, 987654321);
@@ -202,6 +209,7 @@ void regexTest() {
 }
 
 void regexTest1() {
+	regex pattern("\\w+p+\\w");
 	string str("Primary:SooKkaRak@gmail.com     Secondary:Sweeper@yahoo.com");
 
 	smatch m;
@@ -214,38 +222,40 @@ void regexTest1() {
 	}
 }
 
+void Print_set(int* set, int set_size) {
+	for (int i = 0; i < set_size; i++)
+		cout << set[i] << " ";
+	cout << endl;
+}
+
 void CComb(int* set, int set_size,
 	int m, int n, int index) {
 	if (set_size == n) {
 		Print_set(set, set_size);
-		return
+		return;
 	}
-	if (m == index)
-		return
-		set[set_size] = index;
-	CComb(set, set_size + 1, m, n,
-		index + 1);
-	CComb(set, set_size, m, n, index
-		+ 1);
+	if (m == index) return;
+	set[set_size] = index;
+	CComb(set, set_size + 1, m, n, index + 1);
+	CComb(set, set_size, m, n, index + 1);
 }
+
 void HRComb(int* set, int
 	set_size, int m, int n, int index) {
 	if (set_size == n) {
 		Print_set(set, set_size);
-		return
+		return;
 	}
-	else if (index == m) return
-		set[set_size] = index;
-	HRComb(set, set_size + 1, m, n,
-		index);
-	HRComb(set, set_size, m, n, index
-		+ 1);
+	else if (index == m) return;
+	set[set_size] = index;
+	HRComb(set, set_size + 1, m, n, index);
+	HRComb(set, set_size, m, n, index + 1);
 }
 void PPerm(int* set, int set_size,
 	int m, int n) {
 	if (set_size == n) {
 		Print_set(set, set_size);
-		return
+		return;
 	}
 	for (int i = set_size; i < m; i++) {
 		swap(set[i], set[set_size]);
@@ -257,7 +267,7 @@ void PiRPerm(int* set, int
 	set_size, int m, int n) {
 	if (set_size == n) {
 		Print_set(set, set_size);
-		return
+		return;
 	}
 	for (int i = 0; i < m; i++) {
 		set[set_size] = i;
@@ -265,10 +275,9 @@ void PiRPerm(int* set, int
 	}
 }
 void main() {
-	int m = 6, n = 3; //mCn mHn
-	mPn mPin
-		int* set = new int[n]();
-	int* arr = new int[n]();
+	int m = 6, n = 3; //mCn mHn mPn mPin
+	int* set = new int[n]();
+	int* arr = new int[m]();
 	for (int i = 0; i < m; i++) {
 		arr[i] = i;
 	}
@@ -281,28 +290,31 @@ void main() {
 	cout << "mPn" << endl;
 	PPerm(arr, 0, m, n);
 	cout << endl;
-	cout << "m n" << endl; ㅠ
-		PiRPerm(arr, 0, m, n);
+	cout << "mㅠn" << endl;
+	PiRPerm(arr, 0, m, n);
 	cout << endl;
 }
-struct a{
+struct ab{
 	int start;
 	int end;
 	int value;
 };
+
 struct cmp{
-	bool operator()(a t, a u){
+	bool operator()(ab t, ab u){
 		return t.value < u.value;
 	}
 };
 void tempFunction() {
-	priority_queue < a, vector<a>, cmp > pq;
-	// //셔플
-	// vector<int> temp;
-	// random_device rnd_device;
-	// mt19937
+	priority_queue < ab, vector<ab>, cmp > pq;
+
+	//셔플
+	vector<int> temp;
+	random_device rnd_device;
+	mt19937
 	mersenne_engine(rnd_device());
-	// shuffle(begin(temp),end(temp), mersenne_engine);
+	shuffle(begin(temp),end(temp), mersenne_engine);
+
 	srand((unsigned int)time(NULL));
 	rand() % 1000;
 	map<int, int> maxMap;
@@ -358,7 +370,7 @@ void diameter(int here, long long
 int main() {
 	int m, n, l, numTree = 1;
 	optimizar_io
-	cin >> n >> m >> l;
+		cin >> n >> m >> l;
 	a.resize(n + 1);
 	for (int i = 0; i < m; i++) {
 		int from, to, cost;
@@ -380,8 +392,8 @@ int main() {
 				{
 					auto next = a[here][i];
 					if (!check[next.first]) {
-						check[next.first] = true
-							vertex[next.first] = numTree;
+						check[next.first] = true;
+						vertex[next.first] = numTree;
 						q.push(next.first);
 					}
 				}
@@ -434,11 +446,10 @@ void main() {
 	cout << ch << endl;
 	char* chArr = "aaa";
 	s = chArr;
-	cout << chArr << endl << s <<
-		endl;
+	cout << chArr << endl << s << endl;
 	s = "bbb";
-	string temp = "cfk"
-		cout << endl << temp.size() << endl << temp.length() << endl << endl;
+	string temp = "cfk";
+	cout << endl << temp.size() << endl << temp.length() << endl << endl;
 	char * tab2 = new char[temp.length() + 1];
 	tab2 = "afaaffff";
 	strcpy(tab2, temp.c_str());
