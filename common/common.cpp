@@ -183,10 +183,8 @@ vector<int> kmp(string s, string
 	return ans;
 }
 void regexTest() {
-	// regex
-	pattern("(\\w+[\\w\\.]*)@(\\w+[\\w\\.] * \\.[A - Za - z] + )");
-	// regex
-	pattern("@gmail.com$");
+	// regex pattern("(\\w+[\\w\\.]*)@(\\w+[\\w\\.] * \\.[A - Za - z] + )");
+	// regex pattern("@gmail.com$");
 	regex pattern("\\w+p+\\w");
 	string strArr[3][2] = { { "aa", "Soo@gmail.comKpkaRak@gmaiel.com" },
 	{ "bb", "Soo@gmail.comKkaRak@gmail.com" },
@@ -202,6 +200,20 @@ void regexTest() {
 			cout << "Not Match" << endl;
 	}
 }
+
+void regexTest1() {
+	string str("Primary:SooKkaRak@gmail.com     Secondary:Sweeper@yahoo.com");
+
+	smatch m;
+	while (regex_search(str, m, pattern)) {
+		for (size_t i = 0; i < m.size(); i++)
+		{
+			cout << i << "번째 : " << m[i] << endl;
+		}
+		str = m.suffix();
+	}
+}
+
 void CComb(int* set, int set_size,
 	int m, int n, int index) {
 	if (set_size == n) {
