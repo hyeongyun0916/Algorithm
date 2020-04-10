@@ -275,6 +275,8 @@ void PiRPerm(int* set, int
 	}
 }
 void main() {
+	// freopen("input.txt", "r", stdin);
+	
 	int m = 6, n = 3; //mCn mHn mPn mPin
 	int* set = new int[n]();
 	int* arr = new int[m]();
