@@ -1,6 +1,10 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+// 해당 문제는 dp로 풀어야함.
+// 150p에서는 완전 탐색이므로 해결방법은 아님.
+
+// 주어진 문자열 맵에서 단어 찾기. 이동할수 있는 범위는 팔방
 
 vector<vector<int>> direct = {
     {-1, -1}, {-1, 0}, {-1, 1},
@@ -8,6 +12,7 @@ vector<vector<int>> direct = {
     {1, -1}, {1, 0}, {1, 1},
 };
 
+// 2. 두번째 이후 글자를 찾는다.
 bool findNext(const vector<string>& strMap, string str, int pos, int i, int j) {
     if (str.size() == pos)
         return true;
@@ -21,6 +26,7 @@ bool findNext(const vector<string>& strMap, string str, int pos, int i, int j) {
     return false;
 }
 
+// 1. 첫 글자를 찾고
 string findFirst(const vector<string>& strMap, string str) {
     for (int i = 0; i < 5; i++) {
         for (int j = 0; j < 5; j++) {
