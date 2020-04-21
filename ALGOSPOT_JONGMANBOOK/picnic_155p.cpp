@@ -17,14 +17,25 @@ void makeFriends(vector<bool> people, int beforePos) {
     
     for (int i = beforePos+1; i < friends.size(); i++) {
         if (!people[friends[i].first] && !people[friends[i].second]) {
-            vector<bool> temp(people);
-            temp[friends[i].first] = temp[friends[i].second] = true;
-            makeFriends(temp, i);
+            people[friends[i].first] = people[friends[i].second] = true;
+            makeFriends(people, i); // 처음에는 복사배열을 만들어서 넘겼다가, 종만북을 보고 원복하는 것으로 고침
+            people[friends[i].first] = people[friends[i].second] = false;
         }
     }
 }
 
 // https://www.algospot.com/judge/problem/read/PICNIC
+
+/* 
+    내 방법
+    1. 친구를 한쪽만 만듦
+        => 입력이 오름차순이 아닐 경우, 친구를 양 쪽으로 만들어 주는 것이 좋을 듯.
+    2. 친구를 백터와 pair로 만듦
+        => 친구를 2차원 배열로 만들어서 i j가 친구일 경우 friends[i][j] = true로 만드는 것이 좋을 듯.
+    3. makeFriends에서 복사 배열로 넘김
+        => 복사 배열이 아닌 배열 하나로 넣었다가 원래대로 돌리는 것이 좋을 듯
+*/
+
 int main() {
     freopen("ALGOSPOT_JONGMANBOOK/input.txt", "r", stdin);
     int cnt;
