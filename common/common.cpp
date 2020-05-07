@@ -1,4 +1,5 @@
 #pragma warning(disable:4996)
+#include <bits/stdc++.h>
 #include <algorithm>
 #include <regex>
 #include <string>
