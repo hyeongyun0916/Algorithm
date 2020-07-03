@@ -1,11 +1,12 @@
 import sys
+sys.stdin = open('input.txt', 'r')
+
 '''
 3
 1
 1
 1
 '''
-# sys.stdin = open('input.txt', 'r')
 n = int(sys.stdin.readline())
 a = [sys.stdin.readline() for i in range(n)]
 list((map(int, a)))
