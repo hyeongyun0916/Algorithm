@@ -13,14 +13,14 @@ using namespace std;
  * [2] Add Two Numbers
  */
 
-struct ListNode
-{
-    int val;
-    ListNode *next;
-    ListNode() : val(0), next(nullptr) {}
-    ListNode(int x) : val(x), next(nullptr) {}
-    ListNode(int x, ListNode *next) : val(x), next(next) {}
-};
+// struct ListNode
+// {
+//     int val;
+//     ListNode *next;
+//     ListNode() : val(0), next(nullptr) {}
+//     ListNode(int x) : val(x), next(nullptr) {}
+//     ListNode(int x, ListNode *next) : val(x), next(next) {}
+// };
 // @lc code=start
 /**
  * Definition for singly-linked list.
@@ -80,10 +80,10 @@ public:
 };
 // @lc code=end
 
-int main()
-{
-    Solution s;
-    ListNode *l1 = new ListNode(9, new ListNode(9));
-    ListNode *l2 = new ListNode(9);
-    ListNode *ans = s.addTwoNumbers(l1, l2);
-}
+// int main()
+// {
+//     Solution s;
+//     ListNode *l1 = new ListNode(9, new ListNode(9));
+//     ListNode *l2 = new ListNode(9);
+//     ListNode *ans = s.addTwoNumbers(l1, l2);
+// }
