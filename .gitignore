@@ -34,3 +34,5 @@
 
 *.dsYM
 *.o
+*.pyc
+*.txt
