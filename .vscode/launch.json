@@ -1,0 +1,29 @@
+{
+    "configurations": [
+        {
+            "name": "python",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal",
+            "cwd": "${workspaceFolder}",
+        },
+        {
+            "name": "cpp",
+            "type": "lldb",
+            "request": "launch",
+            "program": "${workspaceFolder}/out/${fileBasenameNoExtension}.out",
+            "args": [],
+            "cwd": "${workspaceFolder}",
+            "preLaunchTask": "C/C++: g++ build active file"
+        },
+        {
+            "name": "go",
+            "type": "go",
+            "request": "launch",
+            "mode": "debug",
+            "program": "${file}",
+            "cwd": "${workspaceFolder}"
+        },
+    ]
+}
